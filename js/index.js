@@ -89,6 +89,11 @@ async function onConnect() {
     await refreshAccountData();
 }
 
+async function refreshAccountData() {
+
+    await fetchAccountData(provider);
+  }
+
 async function onSolConnect() {
     const provider = getProvider();
     try {
