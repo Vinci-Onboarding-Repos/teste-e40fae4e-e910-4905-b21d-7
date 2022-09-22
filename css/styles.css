@@ -270,6 +270,7 @@ a[href=undefined] {
     align-self: stretch;
     align-items: center;
     padding: 0px 47px;
+    padding-bottom: 47px;
 }
 
 .Cardsprojects {
@@ -570,6 +571,7 @@ iframe {
     align-self: stretch;
     align-items: center;
     padding: 0px 47px;
+    padding-bottom: 47px;
 }
 
 .Cardsprojects {
@@ -880,6 +882,7 @@ iframe {
     align-self: stretch;
     align-items: center;
     padding: 0px 47px;
+    padding-bottom: 47px;
 }
 
 .parag {
@@ -1042,15 +1045,7 @@ iframe {
     justify-content: flex-start;
     padding-top: 10%;
   }
-  
-  .InputFlexRow1 {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-self: stretch;
-    align-items: center;
-    padding: 0px 47px;
-  }
+
   
   .InputBrandLogo1 {
     width: 100% !important;
@@ -1287,7 +1282,7 @@ iframe {
     align-self: stretch;
     align-items: center;
     padding: 0px 47px;
-    padding-top: 47px;
+    padding-bottom: 47px;
   }
   
   
@@ -1337,15 +1332,6 @@ iframe {
     height: 100vh !important;
     align-items: center;
     flex-direction: column;
-}
-
-.InputFlexColumn {
-  width: 100%;
-  height: 100%;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  display: flex;
 }
 
 .InputFlexRow1 {
