@@ -94,6 +94,7 @@ async function onSolConnect() {
     try {
         provider.connect().then((resp) => {
             console.log(resp.publicKey.toString());
+            const connectButton = document.getElementById("sol");
             connectButton.innerHTML = window.solana.publicKey;
             console.log(provider);
             status.innerHTML = provider.isConnected.toString();
