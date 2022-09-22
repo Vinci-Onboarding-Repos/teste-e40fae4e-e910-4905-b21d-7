@@ -1,4 +1,4 @@
- 
+
 body {
     margin: 0;
 }
@@ -1296,6 +1296,101 @@ iframe {
     height: 16px;
   }
 
+  .ConnectWLastWeek1 {
+    gap: 2px;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: #485175;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: Poppins;
+    line-height: 19.6px;
+    white-space: nowrap;
+    border-style: solid;
+    border-color: #eaeeff;
+    background-color: #f4f6ff;
+    border-radius: 8px;
+    padding: 13px 15px;
+    border-width: 1px;
+    box-sizing: content-box;
+    cursor: pointer;
+}
+
+.ConnectWLastWeek1:hover {
+    box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.3);
+}
+
+.ConnectWGradienttextureRootRoot {
+    flex: 2;
+    width: 100%;
+    display: flex;
+    align-self: center;
+    align-items: stretch;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    display: flex;
+    overflow: auto;
+    height: 100vh !important;
+    align-items: center;
+    flex-direction: column;
+}
+
+.InputFlexColumn {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+}
+
+.InputFlexRow1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-self: stretch;
+  align-items: center;
+  padding: 0px 47px;
+  padding-bottom: 47px;
+}
+.InputLastWeek4{
+  gap: 2px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: #eaeeff;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: Poppins;
+  line-height: 20px;
+  white-space: nowrap;
+  border-style: solid;
+  border-color: #eaeeff;
+  background-color: #0d1121;
+  border-radius: 8px;
+  padding: 13.2px 15.2px;
+  border-width: 0.8px;
+  box-sizing: content-box;
+  cursor: pointer;
+}
+.InputLastWeek4:hover {
+  box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.3);
+}
+
+.InputBrandLogo1 {
+  width: 100% !important;
+  object-fit: cover;
+  height: 9rem !important;
+  object-fit: cover;
+  background-size: 100% 100%;
+  align-self: stretch;
+}
+
 .ConnectWCardsvinciOnboarding {
     margin-top: 150px;
     width: 30%;
@@ -1432,4 +1527,3 @@ height: 60px;
     justify-content: flex-start;
     align-items: center;
 }
-
