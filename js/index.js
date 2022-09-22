@@ -131,6 +131,7 @@ async function check_user_NFT(user_address, token_address, provider_uri) {
     const opensea_uri = 'https://api.opensea.io/api/v1/assets?owner=' + user_address;
     const response = await axios.get(opensea_uri);
     const data = response.data.assets;
+    console.log(data);
     for (var i = 0; i < data.length; i++) {
         if (data[i].asset_contract.address === token_address) {
             console.log('true');
