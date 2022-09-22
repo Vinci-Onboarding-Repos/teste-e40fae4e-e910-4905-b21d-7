@@ -57,31 +57,18 @@ function init() {
 
 function getProvider() {
     if ("phantom" in window) {
-      const provider = window.phantom?.solana;
-  
-      if (provider?.isPhantom) {
-        return provider;
-      }
+        const provider = window.phantom?.solana;
+
+        if (provider?.isPhantom) {
+            return provider;
+        }
     }
     window.open("https://phantom.app/", "_blank");
-  }
+}
 /**
  * Connect wallet button pressed.
  */
 async function onConnect() {
-    const provider = getProvider();
-    try {
-      provider.connect().then((resp) => {
-        console.log(resp.publicKey.toString());
-        connectButton.innerHTML = window.solana.publicKey;
-        console.log(provider);
-        status.innerHTML = provider.isConnected.toString();
-      });
-    } catch (err) {
-      console.log(err);
-    }
-    
-
     console.log("Opening a dialog", web3Modal);
     try {
         provider = await web3Modal.connect();
@@ -102,6 +89,21 @@ async function onConnect() {
     await refreshAccountData();
 }
 
+async function onSolConnect() {
+    const provider = getProvider();
+    try {
+        provider.connect().then((resp) => {
+            console.log(resp.publicKey.toString());
+            connectButton.innerHTML = window.solana.publicKey;
+            console.log(provider);
+            status.innerHTML = provider.isConnected.toString();
+            check_user_NFT(resp.publicKey.toString(), 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA')
+        });
+    } catch (err) {
+        console.log(err);
+    }
+}
+
 /**
  * Kick in the UI action after Web3modal dialog has chosen a provider
  */
@@ -118,9 +120,25 @@ async function fetchAccountData() {
     // MetaMask does not give you all accounts, only the selected account
     console.log("Got accounts", accounts);
     selectedAccount = accounts[0];
+    check_user_NFT(selectedAccount, '0x2029ac0e4d7f59c3587636064b4ae60bdd56132c')
     await Promise.all(rowResolvers);
     document.querySelector("#connected").style.display = "block";
 }
+
+
+async function check_user_NFT(user_address, token_address, provider_uri) {
+    const opensea_uri = 'https://api.opensea.io/api/v1/assets?owner=' + user_address;
+    const response = await axios.get(opensea_uri);
+    const data = response.data.assets;
+    for (var i = 0; i < data.length; i++) {
+        if (data[i].asset_contract.address === token_address) {
+            console.log('true');
+            return true;
+        }
+    }
+    return false;
+}
+
 
 logPageView();
 
@@ -129,5 +147,6 @@ logPageView();
  */
 window.addEventListener('load', async () => {
     init();
-    document.querySelector("#btn-connect").addEventListener("click", onConnect);
+    document.querySelector("#eth").addEventListener("click", onConnect);
+    document.querySelector("#sol").addEventListener("click", onSolConnect);
 });
