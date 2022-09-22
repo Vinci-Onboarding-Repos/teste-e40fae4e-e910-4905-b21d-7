@@ -55,25 +55,32 @@ function init() {
     console.log("Web3Modal instance is", web3Modal);
 }
 
-
+function getProvider() {
+    if ("phantom" in window) {
+      const provider = window.phantom?.solana;
+  
+      if (provider?.isPhantom) {
+        return provider;
+      }
+    }
+    window.open("https://phantom.app/", "_blank");
+  }
 /**
  * Connect wallet button pressed.
  */
 async function onConnect() {
-    const isPhantomInstalled = window.solana && window.solana.isPhantom;
-    console.log(window)
-    if (!isPhantomInstalled) {
-        alert("Phantom browser extension is not detected!");
-    } else {
-        try {
-            const resp = await window.solana.connect();
-            console.log('Account: ' + resp.publicKey.toString());
-            connectAccountAnimation(resp.publicKey.toString());
-        } catch (err) {
-            console.log("User rejected request");
-            console.log(err);
-        }
+    const provider = getProvider();
+    try {
+      provider.connect().then((resp) => {
+        console.log(resp.publicKey.toString());
+        connectButton.innerHTML = window.solana.publicKey;
+        console.log(provider);
+        status.innerHTML = provider.isConnected.toString();
+      });
+    } catch (err) {
+      console.log(err);
     }
+    
 
     console.log("Opening a dialog", web3Modal);
     try {
