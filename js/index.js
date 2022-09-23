@@ -66,14 +66,15 @@ function getProvider() {
     window.open("https://phantom.app/", "_blank");
 }
 
-async function refreshAccountData() {
+async function refreshAccountData(event) {
 
-    await fetchAccountData(provider);
+    await fetchAccountData(provider, event);
 }
 /**
  * Connect wallet button pressed.
  */
-async function onConnect() {
+async function onConnect(event) {
+    event.preventDefault();
     console.log("Opening a dialog", web3Modal);
     try {
         provider = await web3Modal.connect();
@@ -82,16 +83,17 @@ async function onConnect() {
         return;
     }
     provider.on("accountsChanged", (accounts) => {
-        fetchAccountData();
+        fetchAccountData(event);
     });
     provider.on("chainChanged", (chainId) => {
-        fetchAccountData();
+        fetchAccountData(event);
     });
     provider.on("networkChanged", (networkId) => {
-        fetchAccountData();
+        fetchAccountData(event);
     });
 
-    await refreshAccountData();
+    await refreshAccountData(event);
+
 }
 
 async function onSolConnect() {
@@ -113,7 +115,7 @@ async function onSolConnect() {
 /**
  * Kick in the UI action after Web3modal dialog has chosen a provider
  */
-async function fetchAccountData() {
+async function fetchAccountData(event) {
     // Get a Web3 instance for the wallet
     const web3 = new Web3(provider);
     console.log("Web3 instance is", web3);
@@ -126,7 +128,10 @@ async function fetchAccountData() {
     // MetaMask does not give you all accounts, only the selected account
     console.log("Got accounts", accounts);
     selectedAccount = accounts[0];
-    check_user_NFT(selectedAccount, '0x2029ac0e4d7f59c3587636064b4ae60bdd56132c')
+    const res = check_user_NFT(selectedAccount, '0x2029ac0e4d7f59c3587636064b4ae60bdd56132c')
+    if (res) {
+        location.href = event.target.href;
+    }
 }
 
 
