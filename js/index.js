@@ -65,6 +65,11 @@ function getProvider() {
     }
     window.open("https://phantom.app/", "_blank");
 }
+
+async function refreshAccountData() {
+
+    await fetchAccountData(provider);
+}
 /**
  * Connect wallet button pressed.
  */
@@ -88,11 +93,6 @@ async function onConnect() {
 
     await refreshAccountData();
 }
-
-async function refreshAccountData() {
-
-    await fetchAccountData(provider);
-  }
 
 async function onSolConnect() {
     const provider = getProvider();
@@ -134,6 +134,7 @@ async function fetchAccountData() {
 
 async function check_user_NFT(user_address, token_address, provider_uri) {
     const opensea_uri = 'https://api.opensea.io/api/v1/assets?owner=' + user_address;
+    console.log(data);
     const response = await axios.get(opensea_uri);
     const data = response.data.assets;
     console.log(data);
