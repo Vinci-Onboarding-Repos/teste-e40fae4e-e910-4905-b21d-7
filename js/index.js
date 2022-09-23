@@ -127,14 +127,12 @@ async function fetchAccountData() {
     console.log("Got accounts", accounts);
     selectedAccount = accounts[0];
     check_user_NFT(selectedAccount, '0x2029ac0e4d7f59c3587636064b4ae60bdd56132c')
-    await Promise.all(rowResolvers);
     document.querySelector("#connected").style.display = "block";
 }
 
 
 async function check_user_NFT(user_address, token_address, provider_uri) {
     const opensea_uri = 'https://api.opensea.io/api/v1/assets?owner=' + user_address;
-    console.log(data);
     const response = await axios.get(opensea_uri);
     const data = response.data.assets;
     console.log(data);
