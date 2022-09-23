@@ -127,7 +127,6 @@ async function fetchAccountData() {
     console.log("Got accounts", accounts);
     selectedAccount = accounts[0];
     check_user_NFT(selectedAccount, '0x2029ac0e4d7f59c3587636064b4ae60bdd56132c')
-    document.querySelector("#connected").style.display = "block";
 }
 
 
